@@ -29,7 +29,7 @@ class ShopsController extends Controller
         $param = [
             "name" => $request->name,
             "area_id" => $request->area_id,
-            "description" => $request->description
+            "genre_id" => $request->genre_id,
         ];
         DB::table('shops')->insert($param);
         return response()->json([

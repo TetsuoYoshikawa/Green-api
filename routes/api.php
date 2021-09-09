@@ -10,9 +10,19 @@ use App\Http\Controllers\ShopsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
 
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::get('/users', [UsersController::class, 'get']);
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+});
+
+Route::get('/users', [UsersController::class, 'getUser']);
 Route::put('/users', [UsersController::class, 'put']);
 
 Route::post('/comments/shop', [CommentsController::class, 'postShop']);

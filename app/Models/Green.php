@@ -16,4 +16,12 @@ class Green extends Model
     {
         return $this->belongsTo(Area::class);
     }
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+    public function conmmnets()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

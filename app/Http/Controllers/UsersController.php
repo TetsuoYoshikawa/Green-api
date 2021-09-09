@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
@@ -18,6 +19,14 @@ class UsersController extends Controller
         } else {
             return response()->json(['status' => 'not found'], 404);
         }
+    }
+    public function getUser()
+    {
+        $user = User::get();
+        return response()->json([
+            "message" => 'OK',
+            'data' => $user
+        ], 200);
     }
     public function put(Request $request)
     {

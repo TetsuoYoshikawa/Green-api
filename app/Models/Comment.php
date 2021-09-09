@@ -12,6 +12,10 @@ class Comment extends Model
     {
         return $this->belongsTo(Green::class);
     }
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

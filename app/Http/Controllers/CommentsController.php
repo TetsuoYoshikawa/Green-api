@@ -16,8 +16,6 @@ class CommentsController extends Controller
             "green_id" => $request->green_id,
             "user_id" => $request->user_id,
             "content" => $request->content,
-            "created_at" => $now,
-            "updated_at" => $now
         ];
         DB::table('comments')->insert($param);
         return response()->json([
@@ -32,8 +30,6 @@ class CommentsController extends Controller
             "shop_id" => $request->shop_id,
             "user_id" => $request->user_id,
             "content" => $request->content,
-            "created_at" => $now,
-            "updated_at" => $now
         ];
         DB::table('comments')->insert($param);
         return response()->json([

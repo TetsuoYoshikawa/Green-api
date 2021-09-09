@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGreensTable extends Migration
+class CreateCommnetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateGreensTable extends Migration
      */
     public function up()
     {
-        Schema::create('greens', function (Blueprint $table) {
+        Schema::create('commnets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('green_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
+            $table->foreign('green_id')->references('id')->on('greens')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateGreensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('greens');
+        Schema::dropIfExists('posts');
     }
 }
